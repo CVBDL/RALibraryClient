@@ -1,0 +1,120 @@
+﻿<div ng-cloak="" class="tabsdemoDynamicHeight" ng-controller="AdminUpdateBookCtrl">
+    <md-content>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <md-button aria-label="Go Back" ng-click="back()">
+                    Go Back
+                </md-button>
+                <span flex></span>
+                <md-button class="md-raised" aria-label="Save" ng-click="save()">
+                    Save
+                </md-button>
+            </div>
+        </md-toolbar>
+    </md-content>
+
+    <div layout="column" ng-cloak>
+        <md-content layout-padding>
+            <form name="newBookForm">
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Code</label>
+                        <input ng-model="book.code" required disabled name="bookCode">
+                        <div ng-messages="newBookForm.bookCode.$error">
+                            <div ng-message="required">Book code is required.</div>
+                        </div>
+                    </md-input-container>
+                    <div flex="5" hide-xs hide-sm><!-- Spacer //--></div>
+                    <md-input-container class="md-block" flex-gt-sm>
+                    </md-input-container>
+                </div>
+
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>ISBN</label>
+                        <input ng-model="book.isbn" required name="bookIsbn">
+                        <div ng-messages="newBookForm.bookIsbn.$error">
+                            <div ng-message="required">ISBN is required.</div>
+                            <div ng-message="pattern" class="my-message">
+                                Invalid ISBN Number
+                            </div>
+                        </div>
+                    </md-input-container>
+                    <div flex="5" hide-xs hide-sm><!-- Spacer //--></div>
+
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <md-input-container style="margin-top:-20px;margin-left:-10px">
+                            <md-button class="md-raised md-primary" ng-click="check()">Populate</md-button>
+                        </md-input-container>
+                    </md-input-container>
+                </div>
+
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Title</label>
+                        <input ng-model="book.title" required name="bookTitle">
+                        <div ng-messages="newBookForm.bookIsbn.$error">
+                            <div ng-message="required">Book title is required.</div>
+                        </div>
+                    </md-input-container>
+
+                    <div flex="5" hide-xs hide-sm>
+                        <!-- Spacer //-->
+                    </div>
+
+                    <md-input-container class="md-block" flex-gt-xs>
+                        <label>Subtitle</label>
+                        <input ng-model="book.subTitle" name="bookSubtitle">
+                    </md-input-container>
+                </div>
+
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-xs>
+                        <label>Publisher</label>
+                        <input ng-model="book.publisher" name="bookPublisher">
+                    </md-input-container>
+
+                    <div flex="5" hide-xs hide-sm>
+                        <!-- Spacer //-->
+                    </div>
+
+                    <md-input-container class="md-block" flex-gt-xs>
+                        <label>Published Date</label>
+                        <input ng-model="book.publishedDate" name="bookPublishedDate">
+                    </md-input-container>
+                </div>
+
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-xs>
+                        <label>Authors</label>
+                        <input ng-model="book.authors">
+                    </md-input-container>
+
+                    <div flex="5" hide-xs hide-sm>
+                        <!-- Spacer //-->
+                    </div>
+
+                    <md-input-container class="md-block" flex-gt-xs>
+                        <label>PageCount</label>
+                        <input ng-model="book.pageCount" name="bookPageCount">
+                    </md-input-container>
+                </div>
+
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-xs>
+                        <label>Description</label>
+                        <textarea ng-model="book.description" md-maxlength="500" rows="5" md-select-on-focus></textarea>
+                    </md-input-container>
+                </div>
+
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block">
+                        <img ng-src="{{book.thumbnailLink}}" class="md-avatar" alt="{{item.Subtitle}}" />
+                    </md-input-container>
+                </div>
+
+            </form>
+        </md-content>
+
+    </div>
+</div>

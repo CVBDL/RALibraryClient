@@ -1,0 +1,31 @@
+﻿<div id="bookMainContainer" ng-controller="MainCtrl" ng-cloak>
+    <md-content>
+        <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="Me">
+
+            </md-tab>
+            <md-tab label="All" style="max-width:100%">
+
+            </md-tab>
+            <md-tab label="Search" style="max-width:100%">
+                <md-content class="md-padding">
+                    <div layout="column" ng-cloak>
+                        <md-content class="md-padding">
+                            <form ng-submit="$event.preventDefault()" id="searchTabForm">
+                                <md-input-container id="searchBoxContainer" class="md-block md-icon-float md-icon-right" layout="row" layout-align="center center" flex="80">
+                                    <md-icon style="display:inline-block;">
+                                        <i class="material-icons" style="color:gray">search</i>
+                                    </md-icon>
+                                    <input type="text" x-webkit-speech x-webkit-grammar="builtin:translate" />
+                                    <!--<md-icon style="display:inline-block;">
+                                        <i class="material-icons" style="color:gray">keyboard_voice</i>
+                                    </md-icon>-->
+                                </md-input-container>
+                            </form>
+                        </md-content>
+                    </div>
+                </md-content>
+            </md-tab>
+        </md-tabs>
+    </md-content>
+</div>

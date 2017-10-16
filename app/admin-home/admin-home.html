@@ -1,0 +1,39 @@
+<div class="tabsdemoDynamicHeight" ng-controller="AdminHomeCtrl" ng-cloak>
+    <md-content>
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <md-button aria-label="Go Back">
+            Go Back
+          </md-button>
+          <span flex></span>
+
+          <md-input-container md-no-float class="md-block search-container">
+            <img src="../img/ic_search_white_24dp.png" ng-click="search()">
+            <input ng-model="keyword" type="text" placeholder="search " class="search-input" ng-keyup="searchKeyUp($event)">
+          </md-input-container>
+          <md-button class="md-raised" aria-label="New" ng-click="newBook()">
+            New
+          </md-button>
+
+        </div>
+      </md-toolbar>
+
+      <md-list>
+        <md-list-item class="md-2-line" ng-repeat="item in books" ng-click="null">
+          <img ng-src="{{item.ThumbnailLink}}" style="height:50px;width:50px;margin-right:10px"/>
+          <div class="md-list-item-text" layout="column" style="width:200px">
+            <h4>{{ item.Title }}</h4>
+          </div>
+          <div class="md-list-item-text" layout="column">
+            <p>{{ item.Authors }}</p>
+          </div>
+          <md-button title="edit bool" target="_blank" class="md-icon-button" ng-click="editBook(item)">
+            <i class="material-icons" style="color:gray">edit</i>
+          </md-button>
+          <md-button title="delete bool" target="_blank" class="md-icon-button" ng-click="deleteBook(item)">
+            <i class="material-icons" style="color:gray">delete</i>
+          </md-button>
+        </md-list-item>
+      </md-list>
+    </md-content>
+  </div>

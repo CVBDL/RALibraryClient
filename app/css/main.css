@@ -1,0 +1,29 @@
+﻿#bookMainContainer md-pagination-wrapper {
+    justify-content: center;
+    width: 100%;
+}
+
+    #bookMainContainer md-pagination-wrapper > md-tab-item {
+        flex: 33;
+    }
+
+#btnSearch {
+    margin: 0px;
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    width: 20px;
+}
+
+    #btnSearch i {
+    }
+
+#searchTabForm {
+    display: flex;
+    justify-content: center;
+}
+
+#searchBoxContainer {
+    display: flex;
+    justify-content: center;
+}
