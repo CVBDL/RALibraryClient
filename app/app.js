@@ -6,14 +6,27 @@
 	'ngMdIcons', 
 	'material.svgAssetsCache', 
 	'ui.router']);
-	
     app.config(function ($stateProvider, $urlRouterProvider) {
 
-        var mainState = {
-            name: 'main',
-            url: '/main',
-            controller: 'MainCtrl',
-            templateUrl: 'main/main.html'
+        var browseState = {
+            name: 'browse',
+            url: '/browse',
+            controller: 'BrowseCtrl',
+            templateUrl: 'browse/browse.html'
+        }
+
+        var profileState = {
+            name: 'profile',
+            url: '/profile',
+            controller: 'ProfileCtrl',
+            templateUrl: 'profile/profile.html'
+        }
+
+        var searchState = {
+            name: 'search',
+            url: '/search',
+            controller: 'SearchCtrl as ctrl',
+            templateUrl: 'search/search.html'
         }
 
         var adminHomeState = {
@@ -37,10 +50,11 @@
             templateUrl: 'admin-updatebook/admin-updatebook.html'
         }
 
-        $urlRouterProvider.otherwise("/main");
+        $urlRouterProvider.otherwise("/browse");
 
-        $stateProvider.state(mainState);
-
+        $stateProvider.state(browseState);
+        $stateProvider.state(profileState);
+        $stateProvider.state(searchState);
         $stateProvider.state(adminHomeState);
         $stateProvider.state(newBookState);
         $stateProvider.state(updateBookState);
