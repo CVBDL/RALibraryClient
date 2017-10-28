@@ -24,7 +24,7 @@ angular.module('libraryApp').controller('LoginCtrl',
     }
 
     var loginError = function(re){
-        alert("error");
+        toastSvc.showSimple(re.statusText);
     }
   }
 );
