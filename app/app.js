@@ -50,7 +50,14 @@
             templateUrl: 'admin-updatebook/admin-updatebook.html'
         }
 
-        $urlRouterProvider.otherwise("/browse");
+        var loginState = {
+            name: 'login',
+            url: '/login',
+            controller: 'LoginCtrl',
+            templateUrl: 'login/login.html'
+        }
+
+        $urlRouterProvider.otherwise("/login");
 
         $stateProvider.state(browseState);
         $stateProvider.state(profileState);
@@ -58,5 +65,6 @@
         $stateProvider.state(adminHomeState);
         $stateProvider.state(newBookState);
         $stateProvider.state(updateBookState);
+        $stateProvider.state(loginState);
     });
 }());

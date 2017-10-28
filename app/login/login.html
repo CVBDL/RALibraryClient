@@ -1,0 +1,37 @@
+<div ng-cloak="" ng-controller="LoginCtrl">
+    <md-content layout-padding>
+
+        <form name="loginForm" id="loginForm">
+            <div layout="column">
+                <div layout-gt-lg="row" class="loginFormRow">
+                    <img src="./../img/reading.jpg">
+                </div>
+
+                <div layout-gt-lg="row" class="loginFormRow" style="margin-top:30px">
+                    <md-input-container class="md-block" flex="30">
+                        <label>User Name</label>
+                        <input required md-no-asterisk name="username" ng-model="userName">
+                        <div ng-messages="loginForm.username.$error">
+                            <div ng-message="required">User account is required.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div layout-gt-lg="row" class="loginFormRow">
+                    <md-input-container class="md-block" flex="30">
+                        <label>Password</label>
+                        <input type="password" name="password" required md-no-asterisk ng-model="password">
+                        <div ng-messages="loginForm.username.$error">
+                            <div ng-message="required">Password is required.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div layout-gt-lg="row" class="loginFormRow">
+                    <md-button class="md-raised" aria-label="Login" ng-click="login()">
+                        Login
+                    </md-button>
+                </div>
+            </div>
+
+        </form>
+    </md-content>
+</div>

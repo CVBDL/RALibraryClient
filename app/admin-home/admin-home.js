@@ -1,6 +1,11 @@
 (function () {
     var app = angular.module('libraryApp');
-    app.controller("AdminHomeCtrl", function ($scope, $http, $mdDialog, $state, ralibrary, toastSvc) {
+    app.controller("AdminHomeCtrl", function ($scope, $http, $mdDialog, $state, ralibrary, auth, toastSvc) {
+
+        if (!auth.isAuthenticated()) {
+            $state.go('login');
+        }
+
         var doSearch = function (keyword) {
             if (keyword == undefined || keyword == null || keyword == "") {
                 ralibrary.get("api/books").then(onSearchComplete, onError);
@@ -24,7 +29,7 @@
             doSearch($scope.keyword);
         }
 
-        var onDelError= function (re) {
+        var onDelError = function (re) {
             toastSvc.showSimple("Delete book failure");
         }
 
@@ -35,7 +40,7 @@
         $scope.keyword = "";
 
         $scope.editBook = function (book) {
-            $state.go('updateBook', { id: book.Id});
+            $state.go('updateBook', { id: book.Id });
         }
 
         $scope.deleteBook = function (ev) {

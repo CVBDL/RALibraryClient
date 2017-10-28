@@ -1,6 +1,6 @@
 ﻿(function () {
 
-    var ralibrary = function ($http) {
+    var ralibrary = function ($http, auth) {
 
         var serverUrl = "http://localhost:32140/";
 
@@ -13,6 +13,7 @@
                 method: "POST",
                 url: serverUrl + router,
                 data: data,
+                headers: {'Authorization': 'Bearer ' + auth.getToken()}
             });
         }
 

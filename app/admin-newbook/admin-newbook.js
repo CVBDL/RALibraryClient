@@ -1,6 +1,11 @@
 (function () {
     var app = angular.module('libraryApp');
-    app.controller('AdminNewBookCtrl', function ($scope, $http, $state, ralibrary, toastSvc) {
+    app.controller('AdminNewBookCtrl', function ($scope, $http, $state, ralibrary, auth, toastSvc) {
+
+        if (!auth.isAuthenticated()) {
+            $state.go('login');
+        }
+
         $scope.book = {
             isbn: "",
             code: "",

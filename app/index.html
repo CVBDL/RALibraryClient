@@ -12,11 +12,13 @@
   <link rel="stylesheet" href="app.css">
   <link rel="stylesheet" href="css/admin-home.css">
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/login.css">
   <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
   <link rel="stylesheet" href="bower_components/angular-material-icons/angular-material-icons.css">
 </head>
 
 <body ng-app='libraryApp'>
+  <!--
   <md-nav-bar
     md-selected-nav-item="'browse'"
     nav-bar-aria-label="navigation links">
@@ -30,6 +32,7 @@
       Search
     </md-nav-item>
   </md-nav-bar>
+-->
 
   <ui-view></ui-view>
 
@@ -49,9 +52,11 @@
   <script src="admin-home/admin-home.js"></script>
   <script src="admin-newbook/admin-newbook.js"></script>
   <script src="admin-updatebook/admin-updatebook.js"></script>
+  <script src="login/login.js"></script>
 
   <script src="components/version/ralibrary.js"></script>
   <script src="components/version/toast.js"></script>
+  <script src="components/version/authentication.js"></script>
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script>

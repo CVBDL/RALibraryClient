@@ -1,0 +1,8 @@
+.loginFormRow{
+    display: flex;
+    justify-content: center
+}
+
+#loginForm{
+    margin-top: 50px;
+}

@@ -1,6 +1,10 @@
 (function () {
     var app = angular.module('libraryApp');
-    app.controller('AdminUpdateBookCtrl', function ($scope, $http, ralibrary, $state, $stateParams, toastSvc) {
+    app.controller('AdminUpdateBookCtrl', function ($scope, $http, ralibrary, $state, $stateParams, auth, toastSvc) {
+
+        if (!auth.isAuthenticated()) {
+            $state.go('login');
+        }
 
         $scope.book = {
             id: "",
