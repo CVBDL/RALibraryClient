@@ -9,7 +9,7 @@
 
                 <div layout-gt-lg="row" class="loginFormRow" style="margin-top:30px">
                     <md-input-container class="md-block" flex="30">
-                        <label>User Name</label>
+                        <label>RA-INT Account</label>
                         <input required md-no-asterisk name="username" ng-model="userName">
                         <div ng-messages="loginForm.username.$error">
                             <div ng-message="required">User account is required.</div>
@@ -29,6 +29,16 @@
                     <md-button class="md-raised" aria-label="Login" ng-click="login()">
                         Login
                     </md-button>
+                </div>
+            </div>
+
+            <div style="visibility:hidden">
+                <div class="md-dialog-container" id="busyIndicator">
+                    <md-dialog layout-padding class="busyIndicator">
+                        <div layout="row" layout-sm="column" layout-align="space-around">
+                            <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+                        </div>
+                    </md-dialog>
                 </div>
             </div>
 

@@ -6,3 +6,8 @@
 #loginForm{
     margin-top: 50px;
 }
+
+.busyIndicator{
+    background:transparent;
+    box-shadow:0px 0px 0px transparent;
+}

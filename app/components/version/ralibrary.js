@@ -2,7 +2,7 @@
 
     var ralibrary = function ($http, auth) {
 
-        var serverUrl = "http://localhost:32140/";
+        var serverUrl = "https://apcndaec3ycs12.ra-int.com/ralibrary/";
 
         var get = function (router) {
             return $http.get(serverUrl + router);
@@ -21,6 +21,7 @@
             return $http({
                 method: "DELETE",
                 url: serverUrl + router,
+                headers: {'Authorization': 'Bearer ' + auth.getToken()}
             });
         }
 

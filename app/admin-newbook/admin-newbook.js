@@ -1,6 +1,6 @@
 (function () {
     var app = angular.module('libraryApp');
-    app.controller('AdminNewBookCtrl', function ($scope, $http, $state, ralibrary, auth, toastSvc) {
+    app.controller('AdminNewBookCtrl', function ($scope, $http, $state,$mdDialog, ralibrary, auth, toastSvc) {
 
         if (!auth.isAuthenticated()) {
             $state.go('login');
@@ -22,7 +22,9 @@
         $scope.check = function () {
             //e.g. 9787302232599
             var isbn = $scope.book.isbn;
-            ralibrary.get("api/book/isbn/" + isbn).then(onCheckComplete, onError);
+            var promise = ralibrary.get("api/book/isbn/" + isbn);
+            isBusy(true);
+            promise.then(onCheckComplete, onError);
         }
 
         $scope.save = function () {
@@ -64,11 +66,26 @@
             } else if (len == 13) {
                 data.ISBN13 = $scope.book.isbn;
             }
+            isBusy(true);
             ralibrary.post("api/books", data).then(saveOK, onError);
         }
 
         var saveOK = function (re) {
+            isBusy(false);
             toastSvc.showSimple("Success");
+        }
+        
+        var isBusy = function (busy) {
+            if (busy) {
+                $mdDialog.show({
+                    contentElement: '#busyIndicator',
+                    parent: angular.element(document.body),
+                    targetEvent: null,
+                    clickOutsideToClose: false
+                });
+            } else {
+                $mdDialog.hide();
+            }
         }
 
         $scope.back = function () {
@@ -76,6 +93,7 @@
         }
 
         var onCheckComplete = function (response) {
+            isBusy(false);
             var data = response.data;
             $scope.book.title = data.Title;
             $scope.book.subTitle = data.Subtitle;
@@ -88,6 +106,7 @@
         }
 
         var onError = function (response) {
+            isBusy(false);
             if (response.status == 400) {
                 toastSvc.showSimple(response.data.Message);
             } else {

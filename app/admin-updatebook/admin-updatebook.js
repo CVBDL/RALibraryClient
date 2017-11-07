@@ -1,6 +1,6 @@
 (function () {
     var app = angular.module('libraryApp');
-    app.controller('AdminUpdateBookCtrl', function ($scope, $http, ralibrary, $state, $stateParams, auth, toastSvc) {
+    app.controller('AdminUpdateBookCtrl', function ($scope, $http, $mdDialog, ralibrary, $state, $stateParams, auth, toastSvc) {
 
         if (!auth.isAuthenticated()) {
             $state.go('login');
@@ -44,10 +44,25 @@
             }
         }
 
+        var isBusy = function (busy) {
+            if (busy) {
+                $mdDialog.show({
+                    contentElement: '#busyIndicator',
+                    parent: angular.element(document.body),
+                    targetEvent: null,
+                    clickOutsideToClose: false
+                });
+            } else {
+                $mdDialog.hide();
+            }
+        }
+
         $scope.check = function () {
             //e.g. 9787302232599
             var isbn = $scope.book.isbn;
-            ralibrary.get("api/book/isbn/" + isbn).then(onCheckComplete, onError);
+            var promise = ralibrary.get("api/book/isbn/" + isbn);
+            isBusy(true);
+            promise.then(onCheckComplete, onError);
         }
 
         $scope.back = function () {
@@ -76,14 +91,17 @@
                 data.ISBN13 = $scope.book.isbn;
             }
             var router = "api/books/" + $scope.book.id;
+            isBusy(true);
             ralibrary.post(router, data).then(saveOK, onError);
         }
 
         var saveOK = function () {
+            isBusy(false);
             toastSvc.showSimple("Save successfully");
         }
 
         var onCheckComplete = function (response) {
+            isBusy(false);
             var data = response.data;
             $scope.book.title = data.Title;
             $scope.book.subTitle = data.Subtitle;
@@ -96,6 +114,7 @@
         }
 
         var onError = function (response) {
+            isBusy(false);
             if (response.status == 400) {
                 toastSvc.showSimple(response.data.Message);
             } else {

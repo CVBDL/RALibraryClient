@@ -3,7 +3,7 @@
     var authentication = function ($http) {
 
         var storage = window.localStorage;
-        var authenticationUrl = "http://localhost:5485/api/user";
+        var authenticationUrl = "https://apcndaec3ycs12.ra-int.com/raauthentication/api/user";
 
         var post = function (userName, password) {
             return $http({

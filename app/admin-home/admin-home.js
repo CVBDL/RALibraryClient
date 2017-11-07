@@ -49,7 +49,7 @@
                 .textContent('All of the borrow history will be deleted.')
                 .ariaLabel('TODO:')
                 .targetEvent(ev)
-                .ok('Continue')
+                .ok('Delete')
                 .cancel('Cancel');
 
             $mdDialog.show(confirm).then(function () {
